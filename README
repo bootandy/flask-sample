@@ -13,3 +13,5 @@ https://github.com/maxcountryman/flask-bcrypt
 
 Flask-WTF
 
+Flask-Principal
+Still working out what to do with this.

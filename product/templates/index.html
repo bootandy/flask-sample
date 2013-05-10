@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h2>Welcome</h2>
+    <h2>Bonjour</h2>
 
     {% if current_user is defined and current_user.is_authenticated() %}
         <p>You are authorized to access <a href="{{ url_for('secret') }}">the secret information</a>.
@@ -16,5 +16,7 @@
             <li>{{u.email}}</li>
         {% endfor %}
     </ul>
+
+    Care to view your blueprint <a href="{{ url_for('bookmarks.list')}}">bookmarks</a>?
 {% endblock body %}
 

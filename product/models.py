@@ -20,3 +20,8 @@ class User(Document):
 
 
 UserForm = model_form(User)
+
+
+class Bookmark(Document):
+    url = StringField(required=True)
+    desc = StringField(required=True)

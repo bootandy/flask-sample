@@ -1,24 +1,9 @@
-from flask import Flask, current_app, request, session, render_template, redirect
+from flask import Flask, Blueprint, current_app, request, session, render_template, redirect, url_for
 from flask.ext.login import LoginManager, login_user, logout_user, login_required, current_user,fresh_login_required, AnonymousUser
-from flask.ext.wtf import Form, TextField, PasswordField, BooleanField, Required, Email
 from flask.ext.principal import Principal, Identity, AnonymousIdentity, identity_changed
-from flask.ext.bcrypt import Bcrypt
-from mongoengine import connect
 
-from models import *
-
-
-connect('flask_more')
-
-app = Flask(__name__)
-Principal(app)
-bcrypt = Bcrypt(app)
-
-login_manager = LoginManager()
-login_manager.login_view = "login"
-login_manager.login_message = u"Please log in to access this page."
-login_manager.refresh_view = "reauth"
-login_manager.setup_app(app)
+from product.models import *
+from product import app, bcrypt, login_manager
 
 
 @login_manager.user_loader
@@ -31,21 +16,8 @@ def load_user(userid):
         return None
 
 
-@app.route('/')
-def home_page():
-    online_users = User.objects()
-    return render_template('index.html', online_users=online_users)
-
-
-@app.route("/secret")
-@fresh_login_required # Fresh login ensures a revent login otherwise use: @login_required
-def secret():
-    return render_template("secret.html")
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # A hypothetical login form that uses Flask-WTF
     form = UserForm()
 
     if request.method == 'POST':
@@ -107,16 +79,3 @@ def logout():
     identity_changed.send(current_app._get_current_object(), identity=AnonymousIdentity())
 
     return redirect(request.args.get('next') or '/')
-
-
-if __name__ == "__main__":
-    app.secret_key = "yeah, not actually a secret"
-    app.debug = True
-
-    if app.config['DEBUG']:
-        from werkzeug import SharedDataMiddleware
-        import os
-        app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
-          '/': os.path.join(os.path.dirname(__file__), 'static')
-        })
-    app.run()

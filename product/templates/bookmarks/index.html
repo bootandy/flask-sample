@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Bookmarks{% endblock %}
+
+{% block content_title %}Bookmarks{% endblock %}
+
+{% block body %}
+<h2> Here are your bookmarks</h2>
+
+  <ul>
+    {% for bookmark in bm %}
+    <li><a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
+      <a href="{{ url_for('bookmarks.delete', pk=bookmark.id) }}">delete</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
