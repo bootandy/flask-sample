@@ -1,4 +1,4 @@
-A simple Flask app that asks for authorization.
+A simple Flask app that glues together the major Flask Addons that are likely to be needed.
 
 It has included the following moduels:
 
@@ -6,4 +6,10 @@ Flask Login
 https://flask-login.readthedocs.org/en/latest/
 
 Flask MongoEngine
+http://docs.mongoengine.org/en/latest/guide/querying.html#query-operators
+
+Flask-Bcrypt
+https://github.com/maxcountryman/flask-bcrypt
+
+Flask-WTF
 
