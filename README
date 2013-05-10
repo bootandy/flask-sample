@@ -1,0 +1,9 @@
+A simple Flask app that asks for authorization.
+
+It has included the following moduels:
+
+Flask Login
+https://flask-login.readthedocs.org/en/latest/
+
+Flask MongoEngine
+

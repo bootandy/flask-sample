@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h2>REGISTER</h2>
+  <form action="" method=post>
+     {{ form.csrf_token }}
+    <dl>
+      <dt>Username:
+      <dd><input type=text name=email>
+      <dd><input type=text name=password>
+      <dt>Remember Me:
+      <dd><input type=checkbox name=remember value=yes>
+      <dd><input type=submit value=Register>
+    </dl>
+  </form>
+{% endblock %}
