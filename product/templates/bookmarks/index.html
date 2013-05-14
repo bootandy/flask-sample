@@ -7,12 +7,17 @@
 {% block body %}
 <h2> Here are your bookmarks</h2>
 
-  <ul>
-    {% for bookmark in bm %}
-    <li><a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
-      <a href="{{ url_for('bookmarks.delete', pk=bookmark.id) }}">delete</a>
-    </li>
-    {% endfor %}
-  </ul>
+    <ul>
+        {% for bookmark in bm %}
+            <li><a href="{{ bookmark.url }}">{{ bookmark.url }}</a>
+                <a href="{{ url_for('bookmarks.delete', pk=bookmark.id) }}">delete</a>
+            </li>
+        {% endfor %}
+    </ul>
 
+    <form action='/bookmark/add/' method='GET'>
+        <label for='url'>Enter a URL:</label>
+        <input type='textbox' name='url' id='url' />
+        <input type='submit' />
+    </form>
 {% endblock %}

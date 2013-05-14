@@ -8,8 +8,7 @@ from product import app, bcrypt, login_manager
 
 @app.route('/')
 def home_page():
-    online_users = User.objects()
-    return render_template('index.html', online_users=online_users)
+    return render_template('index.html')
 
 
 @app.route("/secret")
@@ -24,10 +23,10 @@ def site_map():
     links = []
     for rule in app.url_map.iter_rules():
         print rule
-        print rule.endpoint
-        # Filter out rules we can't navigate to in a browser
-        # and rules that require parameters
-        if "GET" in rule.methods and rule.defaults is not None and len(rule.defaults) >= len(rule.arguments):
-            url = url_for(rule.endpoint)
-            links.append((url, rule.endpoint))
+        if "GET" in rule.methods:
+            try:
+                url = url_for(rule.endpoint)
+                links.append((url, rule.endpoint))
+            except Exception:
+                pass
     return render_template("all_links.html", links=links)

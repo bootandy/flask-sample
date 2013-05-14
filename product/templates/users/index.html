@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+<h2> Users in the system</h2>
+
+    <ul>
+        {% for u in users %}
+            <li><a href='/user/{{u.id}}'>{{u.email}}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

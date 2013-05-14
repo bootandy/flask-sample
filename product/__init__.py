@@ -24,5 +24,6 @@ login_manager.setup_app(app)
 import views.login_views
 import views.views
 import views.blueprint_views
+import views.classy_views
 
 app.register_blueprint(views.blueprint_views.bookmarks)

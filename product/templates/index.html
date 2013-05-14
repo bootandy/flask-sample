@@ -6,17 +6,13 @@
     {% if current_user is defined and current_user.is_authenticated() %}
         <p>You are authorized to access <a href="{{ url_for('secret') }}">the secret information</a>.
     {% else %}
-        <p>This Web site contains secret information available only to authorized users.
-        Available usernames are Notch, Steve, and Creeper.
+        <p>This Web site contains secret information available only to authorized users. Login to see it
     {% endif %}
 
-    <p>online users are:</p>
-    <ul>
-        {% for u in online_users%}
-            <li>{{u.email}}</li>
-        {% endfor %}
-    </ul>
+    <p>
+        Tell me about the <a href='{{url_for('UserView:index')}}'>users</a> in a Classy-Flask way?
+    </p>
 
-    Care to view your blueprint <a href="{{ url_for('bookmarks.list')}}">bookmarks</a>?
+    Care to view some <a href="{{ url_for('bookmarks.list')}}">bookmarks</a> in a blueprint way?
 {% endblock body %}
 

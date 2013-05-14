@@ -3,15 +3,23 @@ A simple Flask app that glues together the major Flask Addons that are likely to
 It has included the following moduels:
 
 Flask Login
+Simplifying Login
 https://flask-login.readthedocs.org/en/latest/
 
 Flask MongoEngine
+ORM model framework for mongo
 http://docs.mongoengine.org/en/latest/guide/querying.html#query-operators
 
 Flask-Bcrypt
+Our favourite password encryptor
 https://github.com/maxcountryman/flask-bcrypt
 
 Flask-WTF
+Forms!
+
+Flask-Classy
+For more complex views - neat alternative to blueprints
+http://pythonhosted.org/Flask-Classy/
 
 Flask-Principal
 Still working out what to do with this.
